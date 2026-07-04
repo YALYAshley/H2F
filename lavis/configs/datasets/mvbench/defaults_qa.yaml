@@ -1,0 +1,15 @@
+datasets:
+  mvbench_qa:
+    data_type: videos
+
+    build_info:
+      annotations:
+        # A merged JSON list, or a JSON mapping task names to sample lists.
+        test:
+          url: mvbench/annotations/mvbench.json
+          storage: mvbench/annotations/mvbench.json
+      videos:
+        storage: mvbench/videos
+
+    num_frames: 16
+    instance_id_key: question_id
