@@ -1,0 +1,20 @@
+datasets:
+  nextqa:
+    data_type: videos
+
+    build_info:
+      annotations:
+        train:
+          url: nextqa/annotations/train.csv
+          storage: nextqa/annotations/train.csv
+        val:
+          url: nextqa/annotations/val.csv
+          storage: nextqa/annotations/val.csv
+        test:
+          url: nextqa/annotations/test.csv
+          storage: nextqa/annotations/test.csv
+      videos:
+        storage: nextqa/videos
+
+    num_frames: 16
+    instance_id_key: question_id
