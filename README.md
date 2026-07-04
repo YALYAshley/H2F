@@ -1,8 +1,5 @@
 # H2F
 
-This repository extends [MA-LMM](https://boheumd.github.io/MA-LMM/) with a question-conditioned temporal Mixture-of-Depths (Q-MoD) module and a Denoising-Scheduled Semantic Focusing (DSF) for video question answering.
-
-### [MA-LMM Project Page](https://boheumd.github.io/MA-LMM/) | [MA-LMM Paper](https://arxiv.org/abs/2404.05726)
 
 ## 🛠️ Requirements and Installation
 
