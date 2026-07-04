@@ -14,18 +14,18 @@ Basic dependencies:
 **[Online Mode]** Install the dependencies in a Conda environment (recommended for development):
 
 ```bash
-conda create -n diffusion-mod python=3.9 -y
-conda activate diffusion-mod
+conda create -n h2f python=3.9 -y
+conda activate h2f
 
 # Install PyTorch for your CUDA version. The following example uses CUDA 11.8.
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 pip install -r requirements.txt
 ```
 
-**[Package Mode]** Install Diffusion-MoD as an editable Python package (recommended for direct use):
+**[Package Mode]** Install h2f as an editable Python package (recommended for direct use):
 
 ```bash
-conda activate diffusion-mod
+conda activate h2f
 pip install --upgrade pip
 pip install -e .
 ```
