@@ -22,7 +22,6 @@ from lavis.common.optims import (
     LinearWarmupStepLRScheduler,
 )
 from lavis.common.registry import registry
-from lavis.common.utils import now
 
 # imports modules for registration
 from lavis.datasets.builders import *
@@ -44,9 +43,6 @@ def parse_args():
     )
 
     args = parser.parse_args()
-    # if 'LOCAL_RANK' not in os.environ:
-    #     os.environ['LOCAL_RANK'] = str(args.local_rank)
-
     return args
 
 
@@ -71,12 +67,6 @@ def get_runner_class(cfg):
 
 
 def main():
-    # allow auto-dl completes on main process without timeout when using NCCL backend.
-    # os.environ["NCCL_BLOCKING_WAIT"] = "1"
-
-    # set before init_distributed_mode() to ensure the same job_id shared across all ranks.
-    # job_id = now()
-
     cfg = Config(parse_args())
     dataset_name = list(cfg.datasets_cfg.keys())[0]
     cfg.datasets_cfg[dataset_name]['num_frames'] = cfg.model_cfg.num_frames
@@ -112,7 +102,6 @@ def main():
                         cfg.model_cfg.memory_bank_length,
                     )
 
-    cfg.model_cfg.arch += '_malmm'
     if cfg.model_cfg.freeze_vit:
         job_id += '_freezevit'
 
