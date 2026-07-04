@@ -132,32 +132,34 @@ depth_logits [B,T]
 depth_mask [B,T]
 ```
 
-Set the token keep ratio ρ with `model.mod_keep_ratio`. If omitted, the ratio is derived from the legacy values `model.moe_top_k / model.moe_num_experts` for backward compatibility.
+Set the token keep ratio ρ with `model.mod_keep_ratio` (default: `0.5`).
 
-### Q-MoD and DSF
+### Diffusion Semantic Fusion (DSF)
 
-The full multi-block Q-MoD and answer-state diffusion refiner are available from:
+DSF refines question-conditioned temporal evidence before pooling it into the visual token supplied to the language model. The reusable components are available from:
 
 ```python
-from lavis.models.blip2_models.visual_evidence_diffusion import (
+from lavis.models.blip2_models.qmod_dsf import (
     QuestionConditionedMoD,
-    MultiDepthConditionalDenoiser,
-    MultiDepthVisualContextGuidedDiffusionRefiner,
+    DiffusionSemanticFusion,
+    DSFConditionalDenoiser,
+    DSFRefiner,
+    VideoEvidenceAdapter,
 )
 ```
 
-The main controls are grouped under `model.qmod`, `model.DSF`, and `model.ablation` in each project YAML. To override the MoD keep ratio at runtime:
+The effective configuration options are `model.mod_keep_ratio`, `model.mod_expansion`, `model.mod_dropout`, `model.lambda_mod`, `model.lambda_dsf`, `model.dsf_steps`, `model.dsf_init_noise`, and `model.dsf_target_temp`. To override the MoD keep ratio at runtime:
 
 ```bash
 torchrun --nproc_per_node=4 train.py \
-  --cfg-path lavis/projects/malmm/qa_msvd.yaml \
+  --cfg-path lavis/projects/diffusion_mod/qa_msvd.yaml \
   --options model.mod_keep_ratio 0.5
 ```
 
 Run the Q-MoD/DSF unit tests with:
 
 ```bash
-python -m pytest tests/models/test_qmod_DSF.py -q
+python -m pytest tests/models/test_qmod_dsf.py -q
 ```
 
 ## 📝 Citation
@@ -166,3 +168,4 @@ python -m pytest tests/models/test_qmod_DSF.py -q
 ## 🙏 Acknowledgement
 
 This codebase builds upon [MA-LMM](https://github.com/boheumd/MA-LMM) and [LAVIS](https://github.com/salesforce/LAVIS).
+
