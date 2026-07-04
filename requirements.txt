@@ -12,6 +12,7 @@ packaging
 pandas
 plotly
 pre-commit
+pytest
 pycocoevalcap
 pycocotools
 python-magic
