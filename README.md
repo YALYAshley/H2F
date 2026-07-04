@@ -78,7 +78,7 @@ If your data is stored elsewhere, update the corresponding `storage` entries und
 
 ## 🗝️ Training & Evaluation
 
-**[Pre-trained Models]**
+**Pre-trained Models**
 
 The model is initialized from [InstructBLIP Vicuna-7B](https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/InstructBLIP/instruct_blip_vicuna7b_trimmed.pth) and uses Vicuna-7B as its language model. Download the Vicuna weights by following the [FastChat instructions](https://github.com/lm-sys/FastChat/blob/main/docs/vicuna_weights_version.md), then arrange them as:
 
@@ -89,7 +89,7 @@ llm/
 
 The default project configurations expect the language model at `llm/vicuna-7b`.
 
-**[Training]**
+**Training**
 
 The provided scripts launch distributed training on four GPUs:
 
@@ -106,7 +106,7 @@ bash run_scripts/nextqa/train.sh
 
 MVBench currently provides an evaluation script only.
 
-**[Testing]**
+**Testing**
 
 Pass the fine-tuned checkpoint path to the matching evaluation script:
 
